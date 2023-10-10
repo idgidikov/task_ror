@@ -11,7 +11,7 @@
   <tbody>
     <% @brands.each do |brand| %>
       <tr>
-        <td><%= brand.name %></td>
+        <td><%= link_to brand.name, api_brand_path(brand) %></td>
         <td><%= brand.description %></td>
         <td><%= brand.active ? 'Yes' : 'No' %></td>
         <td><%= brand.redemption %></td>

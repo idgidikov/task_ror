@@ -1,0 +1,14 @@
+<h1>Brand Details</h1>
+<h2><%= @brand.name %></h2>
+<p><strong>Description:</strong> <%= @brand.description %></p>
+<p><strong>Redemption:</strong> <%= @brand.redemption %></p>
+
+<h2>Active Products</h2>
+<ul>
+  <% @active_products.each do |product| %>
+    <li>
+      <strong>Name:</strong> <%= product.name %><br>
+      <strong>Amount:</strong> $<%= product.amount %>
+    </li>
+  <% end %>
+</ul>
