@@ -1,0 +1,21 @@
+<h1>List of Brands</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Active</th>
+      <th>Redemption</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @brands.each do |brand| %>
+      <tr>
+        <td><%= brand.name %></td>
+        <td><%= brand.description %></td>
+        <td><%= brand.active ? 'Yes' : 'No' %></td>
+        <td><%= brand.redemption %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
