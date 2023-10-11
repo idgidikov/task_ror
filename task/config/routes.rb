@@ -24,6 +24,16 @@ Rails.application.routes.draw do
   namespace :api do
     resources :products, only: [:index, :show]
   end
-  # Defines the root path route ("/")
-  # root "posts#index"
+  
+  namespace :api do
+    resources :cards, only: [:create]
+  end
+  
+  namespace :api do
+    post '/issue', to: 'issue#create'
+  end
+  
+  namespace :api do
+    get '/cards/:id', to: 'cards#show'
+  end
 end

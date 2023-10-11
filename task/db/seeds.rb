@@ -41,3 +41,29 @@ brand3 = Brand.find_or_create_by(name: 'Reebok')
       active: true  # Set the active status as needed
     )
   end
+
+  products = Product.where(active: true)
+
+  products.each do |product|
+    # Check if the status should be 'issued'
+    status = [true, false].sample ? 'issued' : 'available'
+  
+    # Create a card for the product
+    card = Card.create!(
+      product: product,
+      amount: 100.00,  # Adjust the amount as needed
+      status: status,  # Use the randomly determined status
+      activation_number: SecureRandom.random_number(1_000_000)
+    )
+  
+    # Check if the card's status is 'issued' and create a transaction if so
+    if card.status == 'issued'
+      transaction_data = {
+        card_id: card.id,
+        amount: card.amount,
+        reference_number: "TXN-#{SecureRandom.hex(4)}"
+      }
+      Transaction.create(transaction_data)
+    end
+  end
+  
