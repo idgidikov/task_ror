@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_10_124436) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_11_075106) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_10_124436) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.string "status", default: "available"
+    t.bigint "product_id", null: false
+    t.decimal "amount"
+    t.integer "activation_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_cards_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "amount"
@@ -33,5 +43,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_10_124436) do
     t.index ["brand_id"], name: "index_products_on_brand_id"
   end
 
+  add_foreign_key "cards", "products"
   add_foreign_key "products", "brands"
 end
