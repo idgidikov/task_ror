@@ -1,0 +1,4 @@
+<h1>Product Details</h1>
+<strong>Name:</strong> <%= @product.name %><br>
+<strong>Amount:</strong> $<%= @product.amount %><br>
+<strong>Brand:</strong> <%= link_to @brand.name, api_brand_path(@brand.id) %>

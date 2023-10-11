@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   root to: 'api/brands#index'
-  
+
   namespace :api do
     resources :brands, only: [:show] do
       resources :products, only: [:index], module: :brands
@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     resources :products, only: [:index]
   end
 
+  namespace :api do
+    resources :products, only: [:index, :show]
+  end
   # Defines the root path route ("/")
   # root "posts#index"
 end

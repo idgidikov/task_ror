@@ -1,1 +1,11 @@
-<h1>List of Producs </h1>
+<h1>List of Active Products</h1>
+<ul>
+  <% @active_products.each do |product| %>
+    <li>
+      <strong>Name:</strong> <%= product.name %><br>
+      <strong>Amount:</strong> $<%= product.amount %><br>
+      <strong>Brand:</strong> <%= product.brand.name %>
+      <%= link_to 'View Details', api_product_path(product) %>
+    </li>
+  <% end %>
+</ul>

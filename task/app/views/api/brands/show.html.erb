@@ -9,6 +9,7 @@
     <li>
       <strong>Name:</strong> <%= product.name %><br>
       <strong>Amount:</strong> $<%= product.amount %>
+       <%= link_to 'View Details', api_product_path(product) %>
     </li>
   <% end %>
 </ul>
